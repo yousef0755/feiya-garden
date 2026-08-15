@@ -170,7 +170,7 @@ renderLists();refreshDate();
 /* 上报家庭榜（老板 2026-08-15：一家人一起学）
    这页原来只记"学会了哪几条"，不记日子，所以另存一个日子表。
    只报"今天来没来"，学了哪首诗不报。 */
-var FAM_API="https://yusufs-macbook-pro.tail63c9ae.ts.net";
+var FAM_API="https://su-family.yousef-abud.workers.dev";
 var DAYKEY="feiya_days", famLast="";
 function famToday(){
   var d=new Date();
@@ -209,7 +209,7 @@ famPing();
   });
   function report(){
     var mins=Math.floor(sec/60);
-    fetch("https://yusufs-macbook-pro.tail63c9ae.ts.net/fam/ping",{method:"POST",headers:{"Content-Type":"application/json"},
+    fetch("https://su-family.yousef-abud.workers.dev/fam/ping",{method:"POST",headers:{"Content-Type":"application/json"},
       body:JSON.stringify({who:WHO,mins:mins,done:((function(){try{var m=JSON.parse(localStorage.getItem('feiya_days')||'{}');return m[new Date().toISOString().slice(0,10)]?1:0}catch(e){return 0}})()),total:1,started:sec>20})
     }).catch(function(){});
   }
